@@ -15,7 +15,7 @@ import { Control } from "react-hook-form"
 import { FormFieldType } from "./forms/PatientForm"
 import Image from "next/image"
 import 'react-phone-number-input/style.css';
-import PhoneInput, { E164Number } from "react-phone-number-input"
+import PhoneInput from "react-phone-number-input"
 
 
 
@@ -68,7 +68,7 @@ const {iconSrc, iconAlt, fieldType, placeholder} = props;
                 className = "input-phone"
                 international
                 withCountryCallingCode
-                value={field.value as E164Number | undefined}
+                value={field.value as string | undefined}
                 defaultCountry="NG"/>
             </FormControl>
         )
