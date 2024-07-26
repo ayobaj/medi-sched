@@ -11,11 +11,11 @@ interface ButtonProps {
 const SubmitButton = ({isLoading, className, children}: ButtonProps) => {
 return (
     
-        <Button type='submit' disabled={isLoading} className="bg-indigo-600 p-4 rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 w-[100px]" >
+        <Button type='submit' disabled={isLoading} className="bg-indigo-600 p-4 rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 w-[200px]" >
             {isLoading ? (
             <div className="flex items-center gap-4">
                 <Image 
-                    src="/assets/icons/loader.svg"
+                    src="/assets/icons/lolo.svg"
                     alt="loader"
                     width={24}
                     height={24}
