@@ -66,16 +66,17 @@ function onSubmit(values: z.infer<typeof formSchema>) {
             placeholder="Email"
             iconSrc="/assets/icons/email.svg"
             iconAlt="Email address"/>
-        <Button type="submit">Submit</Button>
 
         <GlobalForm control={form.control} 
             fieldType={FormFieldType.PHONE_INPUT}
             name="phone"
             label="Phone number"
             placeholder="Phone number"
-            iconSrc="/assets/icons/user.svg"
             iconAlt="phone number"/>
 
+        <Button type="submit">Submit</Button>
+
+        
 
         </form>
 

@@ -22,7 +22,7 @@ const Home = () => {
 
           <PatientForm/>
 
-          <div className="text-14-regular mt-20 justify-between">
+          <div className="flex items-center text-14-regular mt-10 justify-between">
             <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
             <Link href='/?admin=true' className="text-indigo-600">
               Admin

@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input"
 import { Control } from "react-hook-form"
 import { FormFieldType } from "./forms/PatientForm"
 import Image from "next/image"
+import 'react-phone-number-input/style.css';
+import PhoneInput, { E164Number } from "react-phone-number-input"
 
 
 
@@ -57,7 +59,20 @@ const {iconSrc, iconAlt, fieldType, placeholder} = props;
             </div>
         )
 
-        
+        case FormFieldType.PHONE_INPUT: 
+        return (
+            <FormControl>
+                <PhoneInput
+                onChange={field.onChange}
+                placeholder = {placeholder}
+                className = "input-phone"
+                international
+                withCountryCallingCode
+                value={field.value as E164Number | undefined}
+                defaultCountry="NG"/>
+            </FormControl>
+        )
+        default: break;
     }
 }
 
@@ -69,7 +84,7 @@ const GlobalForm = (props: CustomProps) =>  {
     return (
         <FormField  
         control={control}
-        name="name"
+        name={name}
         render={({ field }) => (
         <FormItem className="flex-1">
             {fieldType !== FormFieldType.CHECKBOX && label &&(
