@@ -5,14 +5,23 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form  } from "@/components/ui/form"
-import GlobalForm from "./globalForm"
+import GlobalForm from "../GlobalForm"
 
 
+export enum FormFieldType {
+    INPUT = 'input',
+    TEXTAREA = 'textarea',
+    PHONE_INPUT = 'phoneInput',
+    CHECKBOX = 'checkbox',
+    DATE_PICKER = 'datePicker',
+    SELECT = 'select',
+    SKELETON = 'skelton',
+}
 
 
 const formSchema = z.object({
 username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "fullname must be at least 2 characters.",
 }),
 })
 
@@ -36,15 +45,36 @@ function onSubmit(values: z.infer<typeof formSchema>) {
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
 
-            <section className="mb-12 space-y-4">
-                <h1>Welcome!</h1>
+            <section className="mb-12 space-y-4 mt-3">
+                <h1 className="text-5xl">Welcome <span className="text-indigo-600">!</span></h1>
                 <p>Schedule your appointment with a specialist</p>
             </section>
 
-            <GlobalForm control={form.control}/>
+            <GlobalForm control={form.control} 
+            fieldType={FormFieldType.INPUT}
+            name="name"
+            label="Fullname"
+            placeholder="Fullname"
+            iconSrc="/assets/icons/user.svg"
+            iconAlt="user"/>
         
+
+        <GlobalForm control={form.control} 
+            fieldType={FormFieldType.INPUT}
+            name="email"
+            label="Email"
+            placeholder="Email"
+            iconSrc="/assets/icons/email.svg"
+            iconAlt="Email address"/>
         <Button type="submit">Submit</Button>
 
+        <GlobalForm control={form.control} 
+            fieldType={FormFieldType.PHONE_INPUT}
+            name="phone"
+            label="Phone number"
+            placeholder="Phone number"
+            iconSrc="/assets/icons/user.svg"
+            iconAlt="phone number"/>
 
 
         </form>
