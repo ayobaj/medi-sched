@@ -35,7 +35,7 @@ const Home = () => {
 
       <Image src='/assets/images/frm.jpeg'
         alt='patient'
-        className="side-img max-w-[50%] object-cover"
+        className="side-img max-w-[50%]"
         height={1000}
         width={1000}/>
 
