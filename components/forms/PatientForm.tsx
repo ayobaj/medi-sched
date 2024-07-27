@@ -10,7 +10,7 @@ import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
-import { createUser, createuser } from "@/lib/actions/patient.actions"
+import { createUser } from "@/lib/actions/patient.actions"
 
 
 
