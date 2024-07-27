@@ -51,7 +51,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
     
     try {
-        const userData = { name, email, phone}; // Add a default password
+        const userData = { name, email, phone}; 
         const user = await createUser(userData);
 
         if (user && user.$id) {
