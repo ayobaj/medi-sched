@@ -49,18 +49,21 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
     
     setIsLoading(true)
 
-    try{
-
-        const userData = {name, email, phone};
-
+    
+    try {
+        const userData = { name, email, phone}; // Add a default password
         const user = await createUser(userData);
 
-        if(user) router.push(`/patients/${user.$id}/register`);
-
-    }catch(error){
-        console.log(error)
+        if (user && user.$id) {
+            router.push(`/patients/${user.$id}/register`);
+        } else {
+            console.error('User ID is missing or invalid');
+        }
+    } catch (error) {
+        console.error('Error on form submit:', error);
+    } finally {
+        setIsLoading(false); // Ensure loading state is reset
     }
-
 }
 
 
