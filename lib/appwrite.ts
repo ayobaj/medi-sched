@@ -17,3 +17,10 @@ client
     .setKey(API_KEY!)
 
 
+export const databases = new sdk.Databases(client)
+export const storage = new sdk.Storage(client)
+export const messaging = new sdk.Messaging(client)
+export const users = new sdk.Users(client) // Implementing authentication
+
+
+
