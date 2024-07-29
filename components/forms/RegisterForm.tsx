@@ -12,7 +12,9 @@ import { UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
-import { RadioGroup } from "../ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+import { GenderOptions } from "@/constants"
+import { Label } from "../ui/label"
 
 
 
@@ -70,6 +72,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     Here’s what we need from you.</p>
             </section>
 
+            {/*NAME FIELD*/}
             <GlobalForm control={form.control} 
             fieldType={FormFieldType.INPUT}
             name="name"
@@ -78,6 +81,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"/>
 
+            {/*EMAIL AND PHONE NUMBER FIELD*/}
             <div className="flex gap-6 flex-col md:flex-row">
 
                     <GlobalForm control={form.control} 
@@ -97,6 +101,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
             </div>
 
+            {/*DATE OF BIRTH AND GENDER FIELD*/}
             <div className="flex flex-col gap-6 md:flex-row">
                 <GlobalForm control={form.control} 
                     fieldType={FormFieldType.DATE_PICKER}
@@ -114,7 +119,14 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                             <RadioGroup className="flex h-11 gap-6 md:justify-between"
                             onValueChange={field.onChange}
                             defaultValue={field.value}>
-                                
+                                {GenderOptions.map((option) => (
+                                    <div key={option} className="radio-group">
+                                        <RadioGroupItem value={option} id={option}/>
+                                        <Label htmlFor={option} className="cursor-pointer">
+                                            {option}
+                                        </Label>
+                                    </div>
+                                ))}
                             </RadioGroup>
                         </FormControl>
                     )}
