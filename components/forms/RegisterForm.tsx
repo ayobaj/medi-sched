@@ -179,6 +179,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 </div>
             </section>
 
+
+            {/* SELECT A PHYSICIAN */}
             <GlobalForm control={form.control} 
             fieldType={FormFieldType.SELECT}
             name="primaryPhysician"
@@ -201,6 +203,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 ))}
             </GlobalForm>
 
+            {/* ALLERGY AND CURRENT MEDICATION */}
             <div className="flex gap-6 flex-col md:flex-row">
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.INPUT}
@@ -232,6 +235,23 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                         placeholder="Provide the list of your current medication(s)"
                     />
             </div>
+
+
+            {/* <div className="flex gap-6 flex-col">
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.TEXTAREA}
+                        name="allergies"
+                        label="Allergic Reactions"
+                        placeholder="Provide information about substances you react to"
+                    />
+
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.TEXTAREA}
+                        name="currentMedication"
+                        label="Current medication(s)"
+                        placeholder="Provide the list of your current medication(s)"
+                    />
+            </div> */}
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
