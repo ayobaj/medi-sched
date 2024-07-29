@@ -201,7 +201,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 ))}
             </GlobalForm>
 
-            <div className="flex gap-6 flex-col md:flex row">
+            <div className="flex gap-6 flex-col md:flex-row">
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.INPUT}
                         name="insuranceProvider"
