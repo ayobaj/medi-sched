@@ -59,11 +59,14 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
     return (
         <Form {...form}>
 
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex-1">
 
-            <section className="mb-12 space-y-4 mt-3">
+            <section className=" space-y-3 mt-3">
                 <h1 className="text-5xl">Welcome <span className="text-indigo-600">!</span></h1>
-                <p>Schedule your appointment with a specialist</p>
+                <p className="text-sm max-w-[450px]">
+                    To ensure we have all the necessary information to provide you with the best care, please
+                    fill out the following form with accurate details.<br/>
+                    Here’s what we need from you.</p>
             </section>
 
             <GlobalForm control={form.control} 
@@ -73,6 +76,27 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             placeholder="Fullname"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"/>
+
+            <div className="flex gap-6 flex-col md:flex-row">
+
+                    <GlobalForm control={form.control} 
+                    fieldType={FormFieldType.INPUT}
+                    name="email"
+                    label="Email"
+                    placeholder="Email"
+                    iconSrc="/assets/icons/email.svg"
+                    iconAlt="Email address"/>
+
+                    <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.PHONE_INPUT}
+                        name="phone"
+                        label="Phone number"
+                        placeholder="Phone number"
+                        iconAlt="phone number"/>
+
+            </div>
+
+            
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
