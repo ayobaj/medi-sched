@@ -11,24 +11,13 @@ import { useState } from "react"
 import { UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
+import { FormFieldType } from "./PatientForm"
 
 
 
 
-export enum FormFieldType {
-    INPUT = 'input',
-    TEXTAREA = 'textarea',
-    PHONE_INPUT = 'phoneInput',
-    CHECKBOX = 'checkbox',
-    DATE_PICKER = 'datePicker',
-    SELECT = 'select',
-    SKELETON = 'skelton',
-}
 
-
-
-
-const RegisterForm = () => {
+const RegisterForm = ({user}:{user:User}) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -85,16 +74,6 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"/>
         
-
-        <GlobalForm control={form.control} 
-            fieldType={FormFieldType.INPUT}
-            name="email"
-            label="Email"
-            placeholder="Email"
-            iconSrc="/assets/icons/email.svg"
-            iconAlt="Email address"/>
-
-        <GlobalForm control={form.control} 
             fieldType={FormFieldType.PHONE_INPUT}
             name="phone"
             label="Phone number"

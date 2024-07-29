@@ -1,13 +1,15 @@
 import RegisterForm from "@/components/forms/RegisterForm"
+import { getUser } from "@/lib/actions/patient.actions"
 import Image from "next/image"
 import Link from "next/link"
 
 
-const Register = () => {
+const Register = async ({params: {userId}}: SearchParamProps ) => {
+
+    const user = await getUser(userId)
+
 return (
     <div className="flex h-screen max-h-screen">
-
-    {/* otp verification*/}
 
     <section className="remove-scrollbar container my-auto">
     
@@ -18,7 +20,7 @@ return (
                 <span className="text-white">-Sched</span>
             </div>
 
-            <RegisterForm/>
+            <RegisterForm user={user}/>
 
             <div className="flex items-center text-14-regular mt-10 justify-between">
                 <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
