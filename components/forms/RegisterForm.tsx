@@ -106,7 +106,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 <GlobalForm control={form.control} 
                     fieldType={FormFieldType.DATE_PICKER}
                     name="birthDate"
-                    label="D.O.B"
+                    label="Date of Birth"
                     placeholder="Date of Birth"/>
 
                 <GlobalForm control={form.control}

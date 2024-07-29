@@ -16,6 +16,8 @@ import { FormFieldType } from "./forms/PatientForm"
 import Image from "next/image"
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -38,7 +40,7 @@ interface CustomProps {
 
 const RenderField = ({field, props}: {field:any; props: CustomProps}) => {
 
-const {iconSrc, iconAlt, fieldType, placeholder} = props;
+const {iconSrc, iconAlt, fieldType, placeholder, showTimeSelect, dateFormat} = props;
 
     switch(props.fieldType){
         case FormFieldType.INPUT: 
@@ -65,13 +67,36 @@ const {iconSrc, iconAlt, fieldType, placeholder} = props;
                 <PhoneInput
                 onChange={field.onChange}
                 placeholder = {placeholder}
-                className = "input-phone"
+                className = "input-phone border border-1 border-white"
                 international
                 withCountryCallingCode
                 value={field.value as string | undefined}
                 defaultCountry="NG"/>
             </FormControl>
         )
+
+        case FormFieldType.DATE_PICKER : 
+        return(
+            <div className="flex rounded-md border border-dark-400">
+                <Image 
+                src="/assets/icons/calendar.svg"
+                alt="calendar"
+                className="ml-2"
+                width={24}
+                height={24}
+                />
+                <FormControl>
+                    <DatePicker selected={field.value} 
+                    onChange={(date) => field.onChange(date)} 
+                    dateFormat={dateFormat ?? 'dd/MM/yyyy'}
+                    showTimeSelect={showTimeSelect ?? false}
+                    timeInputLabel="Time:"
+                    wrapperClassName="date-picker"
+                    />
+                </FormControl>
+            </div>
+        )
+
         default: break;
     }
 }
