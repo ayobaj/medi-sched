@@ -74,11 +74,6 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"/>
         
-            fieldType={FormFieldType.PHONE_INPUT}
-            name="phone"
-            label="Phone number"
-            placeholder="Phone number"
-            iconAlt="phone number"/>
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
