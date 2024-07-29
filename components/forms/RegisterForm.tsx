@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { Form  } from "@/components/ui/form"
+import { Form, FormControl  } from "@/components/ui/form"
 import GlobalForm from "../GlobalForm"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
@@ -12,6 +12,7 @@ import { UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
+import { RadioGroup } from "../ui/radio-group"
 
 
 
@@ -96,7 +97,37 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
             </div>
 
-            
+            <div className="flex flex-col gap-6 md:flex-row">
+                <GlobalForm control={form.control} 
+                    fieldType={FormFieldType.DATE_PICKER}
+                    name="birthDate"
+                    label="D.O.B"
+                    placeholder="Date of Birth"/>
+
+                <GlobalForm control={form.control}
+                    fieldType={FormFieldType.SKELETON}
+                    name="gender"
+                    label="Gender"
+                    placeholder="Phone number"
+                    renderSkeleton={(field) => (
+                        <FormControl>
+                            <RadioGroup className="flex h-11 gap-6 md:justify-between"
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}>
+                                
+                            </RadioGroup>
+                        </FormControl>
+                    )}
+                    />
+            </div>
+
+            <div className="flex flex-col gap-6 md:flex-row">
+
+            </div>
+
+            <div className="flex flex-col gap-6 md:flex-row">
+
+            </div>
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
