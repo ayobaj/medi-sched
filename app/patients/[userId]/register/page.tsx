@@ -1,3 +1,4 @@
+import RegisterForm from "@/components/forms/RegisterForm"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -17,12 +18,7 @@ return (
                 <span className="text-white">-Sched</span>
             </div>
 
-            <section className="mb-12 space-y-4 mt-3">
-                <h1 className="text-5xl">Welcome <span className="text-indigo-600">!</span></h1>
-                <p>Schedule your appointment with a specialist</p>
-            </section>
-
-            {/* <PatientForm/> */}
+            <RegisterForm/>
 
             <div className="flex items-center text-14-regular mt-10 justify-between">
                 <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
