@@ -202,7 +202,35 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </GlobalForm>
 
             <div className="flex gap-6 flex-col md:flex row">
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.INPUT}
+                        name="insuranceProvider"
+                        label="Insurance Provider"
+                        placeholder="Insurance Provider"
+                    />
 
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.INPUT}
+                        name="insurancePolicyNumber"
+                        label="insurance policy number"
+                        placeholder="CBG0099999"
+                    />
+            </div>
+
+            <div className="flex gap-6 flex-col md:flex row">
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.TEXTAREA}
+                        name="allergies"
+                        label="Allergic Reactions"
+                        placeholder="Provide information about substances you react to"
+                    />
+
+                <GlobalForm control={form.control} 
+                        fieldType={FormFieldType.TEXTAREA}
+                        name="currentMedication"
+                        label="Current medication(s)"
+                        placeholder="Provide the list of your current medication(s)"
+                    />
             </div>
         
 
