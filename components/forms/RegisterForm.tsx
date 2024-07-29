@@ -183,7 +183,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             fieldType={FormFieldType.SELECT}
             name="primaryPhysician"
             label="Doctor or Physician"
-            placeholder="select a physician"
+            placeholder="select a doctor or physician"
             >
                 {Doctors.map((doctor) => (
                     <SelectItem key = {doctor.name} value={doctor.name}>
