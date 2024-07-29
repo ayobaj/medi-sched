@@ -177,7 +177,14 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 </div>
             </section>
 
-            
+            <GlobalForm control={form.control} 
+            fieldType={FormFieldType.SELECT}
+            name="primaryPhysician"
+            label="Doctor or Physician"
+            placeholder="select a physician"
+            >
+                
+            </GlobalForm>
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
