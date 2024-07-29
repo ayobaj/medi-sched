@@ -135,7 +135,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     />
             </div>
 
-            {/*ADDRESS AND INFORMATION*/}
+            {/*ADDRESS AND OCCUPATION*/}
             <div className="flex flex-col gap-6 md:flex-row">
                 <GlobalForm control={form.control} 
                     fieldType={FormFieldType.INPUT}
@@ -200,6 +200,10 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     </SelectItem>
                 ))}
             </GlobalForm>
+
+            <div className="flex gap-6 flex-col md:flex row">
+
+            </div>
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
