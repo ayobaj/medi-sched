@@ -236,22 +236,23 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     />
             </div>
 
+             {/* FAMILY MEDICAL HISTORY AND PERSONAL MEDICAL HISTORY */}
+            <div className="flex gap-6 flex-col md:flex-row">
 
-            {/* <div className="flex gap-6 flex-col">
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.TEXTAREA}
-                        name="allergies"
-                        label="Allergic Reactions"
-                        placeholder="Provide information about substances you react to"
+                        name="pastMedicalHistory"
+                        label="Medical History"
+                        placeholder="Provide information about your medical history"
                     />
 
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.TEXTAREA}
-                        name="currentMedication"
-                        label="Current medication(s)"
-                        placeholder="Provide the list of your current medication(s)"
+                        name="familyMedicalHistory"
+                        label="Family Medical History"
+                        placeholder="Provide information about family medical history"
                     />
-            </div> */}
+            </div>
         
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
