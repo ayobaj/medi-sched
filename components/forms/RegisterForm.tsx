@@ -232,7 +232,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.TEXTAREA}
                         name="allergies"
-                        label="Allergic Reactions"
+                        label="Allergic Reaction(s)"
                         placeholder="Provide information about substances you react to"
                     />
 
