@@ -256,7 +256,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
         
 
-            {/**/}
+            {/*IDENTITY NUMBER, IDENTITY UPLOAD, IDENTITY TYPE*/}
             <section className="space-y-6">
                 <div className="mb-6 space-y-1">
                     <h2 className="sub-header">
@@ -304,6 +304,30 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     </h2>
                 </div>
             </section>
+
+            {/*CONSENT AND PRIVACY*/}
+            <GlobalForm
+                fieldType={FormFieldType.CHECKBOX}
+                control={form.control}
+                name="treatmentConsent"
+                label="Consent to treatment"
+            />
+
+            <GlobalForm
+                fieldType={FormFieldType.CHECKBOX}
+                control={form.control}
+                name="disclosureConsent"
+                label="Consent to discolure of information"
+            />
+
+            <GlobalForm
+                fieldType={FormFieldType.CHECKBOX}
+                control={form.control}
+                name="privacyConsent"
+                label="Consent to privacy policy"
+            />
+
+
 
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
