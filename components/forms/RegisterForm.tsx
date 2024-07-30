@@ -255,6 +255,15 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
         
 
+
+            <section className="space-y-6">
+                <div className="mb-6 space-y-1">
+                    <h2 className="sub-header">
+                        Identification and Verification
+                    </h2>
+                </div>
+            </section>
+
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
         
