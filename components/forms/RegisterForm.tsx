@@ -237,7 +237,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
 
              {/* FAMILY MEDICAL HISTORY AND PERSONAL MEDICAL HISTORY */}
-            <div className="flex gap-6 flex-col md:flex-row">
+            <div className="flex gap-6 flex-col">
 
                 <GlobalForm control={form.control} 
                         fieldType={FormFieldType.TEXTAREA}
@@ -255,7 +255,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
         
 
-            {/*bbub*/}
+            {/**/}
             <section className="space-y-6">
                 <div className="mb-6 space-y-1">
                     <h2 className="sub-header">
@@ -276,6 +276,13 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     </SelectItem>
                 ))}
             </GlobalForm>
+
+            <GlobalForm control={form.control} 
+                    fieldType={FormFieldType.INPUT}
+                    name="identificationNumber"
+                    label="Identification number"
+                    placeholder="Provide your identification number for the document selected"
+                />
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
