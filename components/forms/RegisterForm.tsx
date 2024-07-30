@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
-import { Doctors, GenderOptions } from "@/constants"
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
 import { Label } from "../ui/label"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
@@ -255,7 +255,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
         
 
-
+            {/*bbub*/}
             <section className="space-y-6">
                 <div className="mb-6 space-y-1">
                     <h2 className="sub-header">
@@ -263,6 +263,19 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     </h2>
                 </div>
             </section>
+
+            <GlobalForm control={form.control} 
+                fieldType={FormFieldType.SELECT}
+                name="identificationType"
+                label="Identification Type"
+                placeholder="Select an identification type"
+            >
+                {IdentificationTypes.map((idtype) => (
+                    <SelectItem key = {idtype} value={idtype}>
+                        {idtype}
+                    </SelectItem>
+                ))}
+            </GlobalForm>
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
