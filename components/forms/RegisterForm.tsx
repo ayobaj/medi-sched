@@ -60,11 +60,20 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
     
     try {
         
+        const patientData = {
+            ...values,
+            userId: user.$id,
+            birthDate: new Date(values.birthDate),
+            identificationDocument: formData,
+
+        }
+
+        const patient = await registerPatient(patientData);
+
+        if(patient) router.push(`/patients/${user.$id}/new-appointment`)
+
     } catch (error) {
         console.error('Error on form submit:', error);
-    } finally {
-        setIsLoading(false); // Ensure loading state is reset
-    }
 }
 
 
