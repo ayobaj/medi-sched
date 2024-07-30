@@ -115,7 +115,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     fieldType={FormFieldType.SKELETON}
                     name="gender"
                     label="Gender"
-                    placeholder="Phone number"
+                    placeholder="gender"
                     renderSkeleton={(field) => (
                         <FormControl>
                             <RadioGroup className="flex h-11 gap-6 md:justify-between"
@@ -283,6 +283,18 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     label="Identification number"
                     placeholder="Provide your identification number for the document selected"
                 />
+
+            <GlobalForm control={form.control}
+                    fieldType={FormFieldType.SKELETON}
+                    name="identificationDocument"
+                    label="Identification document"
+                    placeholder="Copy of identification document"
+                    renderSkeleton={(field) => (
+                        <FormControl>
+                            File Upload
+                        </FormControl>
+                    )}
+                    />
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
