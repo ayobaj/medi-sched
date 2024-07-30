@@ -10,7 +10,7 @@ import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { PatientFormValidation, UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patient.actions"
+import { createUser, registerPatient } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues } from "@/constants"
@@ -68,12 +68,14 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
 
         }
 
+        // @ts-ignore
         const patient = await registerPatient(patientData);
 
         if(patient) router.push(`/patients/${user.$id}/new-appointment`)
 
     } catch (error) {
         console.error('Error on form submit:', error);
+    }
 }
 
 
