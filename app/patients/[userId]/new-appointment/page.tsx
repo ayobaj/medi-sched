@@ -1,15 +1,17 @@
-    import PatientForm from "@/components/forms/PatientForm"
+    import AppointmentForm from "@/components/forms/AppointmentForm"
+import PatientForm from "@/components/forms/PatientForm"
     import Image from "next/image"
     import Link from "next/link"
 
 
 
 
-    const NewAppointment = () => {
+    const NewAppointment = async ({params : {userId}}: SearchParamProps) => {
+
+        const patient = await getPatient(userId);
+
     return (
         <div className="flex h-screen max-h-screen">
-
-        {/* otp verification*/}
 
         <section className="remove-scrollbar container my-auto">
             
@@ -20,7 +22,7 @@
                 <span className="text-white">-Sched</span>
             </div>
 
-            {/* <PatientForm/> */}
+            <AppointmentForm type ="create" userId={userId}/>
 
                 <div className="flex items-center text-14-regular mt-10 justify-between">
                     <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
