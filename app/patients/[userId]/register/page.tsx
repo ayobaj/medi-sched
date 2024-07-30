@@ -11,9 +11,9 @@ const Register = async ({params: {userId}}: SearchParamProps ) => {
 return (
     <div className="flex h-screen max-h-screen">
 
-    <section className="remove-scrollbar container my-auto">
+    <section className="remove-scrollbar container ">
     
-        <div className="sub-container max-w-[496px]">
+        <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
 
             <div className="flex text-xl">
                 <span className="text-indigo-600">Medi</span>
@@ -22,20 +22,17 @@ return (
 
             <RegisterForm user={user}/>
 
-            <div className="flex items-center text-14-regular mt-10 justify-between">
-                <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
-                <Link href='/?admin=true' className="text-indigo-600">
-                    Admin
-                </Link>
+            <div className="flex items-center text-14-regular mt-10 justify-between py-12">
+                <p className="justify-items-end text-dark-600 md:text-left">© {new Date().getFullYear()} Medi-Sched</p>
             </div>
 
         </div>
 
     </section>
 
-    <Image src='/assets/images/register-img.png'
+    <Image src='/assets/images/formimage.jpeg'
     alt='registration page'
-    className="side-img max-w-[390px]"
+    className="side-img max-w-[390px] object-cover"
     height={1000}
     width={1000}/>
 
