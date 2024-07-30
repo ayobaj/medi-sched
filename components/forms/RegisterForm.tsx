@@ -73,6 +73,8 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
 
         if(patient) router.push(`/patients/${user.$id}/new-appointment`)
 
+        setIsLoading(false)
+
     } catch (error) {
         console.error('Error on form submit:', error);
     }
@@ -220,6 +222,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
                     </SelectItem>
                 ))}
             </GlobalForm>
+
 
             {/* INSURANCE PROVIDER AND POLICY NUMBER */}
             <div className="flex gap-6 flex-col md:flex-row">
