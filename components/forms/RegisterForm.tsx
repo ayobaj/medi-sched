@@ -17,6 +17,7 @@ import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
 import { Label } from "../ui/label"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
+import { FileUploader } from "../ui/FileUploader"
 
 
 
@@ -291,7 +292,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     placeholder="Copy of identification document"
                     renderSkeleton={(field) => (
                         <FormControl>
-                            File Upload
+                            <FileUploader files={field.value} onChange={field.onChange} />
                         </FormControl>
                     )}
                     />
