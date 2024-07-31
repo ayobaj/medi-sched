@@ -71,7 +71,7 @@ async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
 
             if(appointment){
                 form.reset();
-                router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.id}`)
+                router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
             }
         }
 
