@@ -8,7 +8,7 @@ import { Form  } from "@/components/ui/form"
 import GlobalForm from "../GlobalForm"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { UserFormValidation } from "@/lib/FormValidation"
+import { AppointmentFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
@@ -25,17 +25,19 @@ const AppointmentForm = ({userId, patientId, type}: {userId: string; patientId: 
 
 
 // 1. Define your form.
-const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+const form = useForm<z.infer<typeof AppointmentFormValidation>>({
+    resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-    name: "",
-    email: "",
-    phone: "",
+        primaryPhysician: "",
+        schedule: new Date(),
+        reason: "",
+        note: "",
+        cancellationReason: ""
     },
 })
 
 // 2. Define a submit handler.
-async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>) {
+async function onSubmit({name, email, phone}: z.infer<typeof AppointmentFormValidation>) {
     
     setIsLoading(true)
 
@@ -131,7 +133,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
                         <GlobalForm fieldType={FormFieldType.TEXTAREA}
                             control={form.control}
-                            name="notes"
+                            name="note"
                             label="Notes"
                             placeholder="Type in Notes"
                         />
