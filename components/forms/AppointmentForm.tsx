@@ -18,7 +18,7 @@ import Image from "next/image"
 
 
 
-const AppointmentForm = ({userId, patientId, type}: {userId: string; patientId: string; type: "create" | "cancel";}) => {
+const AppointmentForm = ({userId, patientId, type}: {userId: string; patientId: string; type: "create" | "cancel" | "schedule"}) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -56,6 +56,23 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
     }
 }
 
+    let buttonLabel;
+
+    switch (type) {
+        case 'cancel':
+            buttonLabel = 'cancel Appointment'
+            break;
+        case 'create':
+            buttonLabel = 'Create Appointment'
+            break;
+        case 'schedule':
+            buttonLabel = 'Schedule Appointment';
+            break
+    
+        default:
+            break;
+    }
+
 
     return (
         <Form {...form}>
@@ -75,8 +92,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     <GlobalForm control={form.control} 
                     fieldType={FormFieldType.SELECT}
                     name="primaryPhysician"
-                    label="Doctor"
-                    placeholder="select a doctor"
+                    label="Doctor or Physician"
+                    placeholder="Select a doctor or Physician"
                     >
                     {Doctors.map((doctor) => (
                         <SelectItem key = {doctor.name} value={doctor.name}>
@@ -97,7 +114,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     <GlobalForm fieldType={FormFieldType.DATE_PICKER} 
                         control={form.control}
                         name="schedule"
-                        label="select appointment date and time"
+                        label="Select appointment date and time"
                         showTimeSelect
                         dateFormat="dd/ MM /yyy - h:mm aa"
                     >
@@ -123,8 +140,20 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     </>
             )}
 
+            {type === "cancel" && (
+                <>
+                    <GlobalForm
+                        fieldType={FormFieldType.TEXTAREA}
+                        control={form.control}
+                        name="cancellationReason"
+                        label="Reason for cancellation"
+                        placeholder="Type in reason for cancellation"
+                    />
+                </>
+            )}
 
-        <SubmitButton isLoading={isLoading}>Start</SubmitButton>
+
+        <SubmitButton isLoading={isLoading} className={`${type === "cancel" ? 'shad-danger-btn' : 'bg-indigo-600'}`} >{buttonLabel}</SubmitButton>
 
         
 

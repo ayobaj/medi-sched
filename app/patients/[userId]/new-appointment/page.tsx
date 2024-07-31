@@ -35,7 +35,7 @@ import { getPatient } from "@/lib/actions/patient.actions"
 
         <Image src='/assets/images/docapp.jpg'
             alt='appointment'
-            className="side-img max-w-[40%] bg-bottom"
+            className="side-img max-w-[40%] bg-bottom static"
             height={1000}
             width={1000}/>
 
