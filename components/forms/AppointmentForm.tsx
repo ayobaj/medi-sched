@@ -8,7 +8,7 @@ import { Form  } from "@/components/ui/form"
 import GlobalForm from "../GlobalForm"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { AppointmentFormValidation } from "@/lib/FormValidation"
+import { AppointmentFormValidation, CreateAppointmentSchema } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
@@ -37,20 +37,39 @@ const form = useForm<z.infer<typeof AppointmentFormValidation>>({
 })
 
 // 2. Define a submit handler.
-async function onSubmit({name, email, phone}: z.infer<typeof AppointmentFormValidation>) {
+async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
     
     setIsLoading(true)
 
+    let status;
+
+    switch (type) {
+        case 'schedule':
+            status = 'scheduled';
+            break;
+        case 'cancel':
+            status = 'cancelled';
+            break;
+        default:
+            status = 'pending';
+            break;
+    }
+
     
     try {
-        const userData = { name, email, phone}; 
-        const user = await createUser(userData);
-
-        if (user && user.$id) {
-            router.push(`/patients/${user.$id}/register`);
-        } else {
-            console.error('User ID is missing or invalid');
+        if(type === 'create' && patientId){
+            const appointmentData = {
+                userId,
+                patient: patientId,
+                primaryPhysician: values.primaryPhysician,
+                schedule: new Date(values.schedule),
+                reason: values.reason,
+                note: values.note,
+                status: status as Status,
+            }
         }
+
+        // const appointment = await CreateAppointment(appointmentData)
     } catch (error) {
         console.error('Error on form submit:', error);
     } finally {
