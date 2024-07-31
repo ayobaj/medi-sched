@@ -1,5 +1,6 @@
     import AppointmentForm from "@/components/forms/AppointmentForm"
 import PatientForm from "@/components/forms/PatientForm"
+import { getPatient } from "@/lib/actions/patient.actions"
     import Image from "next/image"
     import Link from "next/link"
 
@@ -22,7 +23,7 @@ import PatientForm from "@/components/forms/PatientForm"
                 <span className="text-white">-Sched</span>
             </div>
 
-            <AppointmentForm type ="create" userId={userId}/>
+            <AppointmentForm type="create" userId={userId}/>
 
                 <div className="flex items-center text-14-regular mt-10 justify-between">
                     <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
