@@ -12,6 +12,9 @@ import { UserFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
+import { Doctors } from "@/constants"
+import { SelectItem } from "../ui/select"
+import Image from "next/image"
 
 
 
@@ -64,31 +67,62 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 <p>Request a new appointment</p>
             </section>
 
-            
+            { type  !== "cancel" && (
+                <>
+                    
 
-            <GlobalForm control={form.control} 
-            fieldType={FormFieldType.INPUT}
-            name="name"
-            label="Fullname"
-            placeholder="Fullname"
-            iconSrc="/assets/icons/user.svg"
-            iconAlt="user"/>
-        
+                    {/* SELECT A PHYSICIAN */}
+                    <GlobalForm control={form.control} 
+                    fieldType={FormFieldType.SELECT}
+                    name="primaryPhysician"
+                    label="Doctor"
+                    placeholder="select a doctor"
+                    >
+                    {Doctors.map((doctor) => (
+                        <SelectItem key = {doctor.name} value={doctor.name}>
+                            <div className="flex cursor-pointer items-center gap-2 ">
+                                <Image
+                                src={doctor.image}
+                                width={32}
+                                height={32}
+                                alt={doctor.name}
+                                className="rounded-full border border-dark-500"
+                                />
+                                <p>{doctor.name}</p>
+                            </div>
+                        </SelectItem>
+                    ))}
+                    </GlobalForm>
 
-        <GlobalForm control={form.control} 
-            fieldType={FormFieldType.INPUT}
-            name="email"
-            label="Email"
-            placeholder="Email"
-            iconSrc="/assets/icons/email.svg"
-            iconAlt="Email address"/>
+                    <GlobalForm fieldType={FormFieldType.DATE_PICKER} 
+                        control={form.control}
+                        name="schedule"
+                        label="select appointment date and time"
+                        showTimeSelect
+                        dateFormat="dd/ MM /yyy - h:mm aa"
+                    >
+                    </GlobalForm>
 
-        <GlobalForm control={form.control} 
-            fieldType={FormFieldType.PHONE_INPUT}
-            name="phone"
-            label="Phone number"
-            placeholder="Phone number"
-            iconAlt="phone number"/>
+                    <div>
+
+                        <GlobalForm fieldType={FormFieldType.TEXTAREA}
+                            control={form.control}
+                            name="reason"
+                            label="Reason for appointment"
+                            placeholder="Type in reason for appointment"
+                        />
+
+                        <GlobalForm fieldType={FormFieldType.TEXTAREA}
+                            control={form.control}
+                            name="notes"
+                            label="Notes"
+                            placeholder="Type in Notes"
+                        />
+
+                    </div>
+                    </>
+            )}
+
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
