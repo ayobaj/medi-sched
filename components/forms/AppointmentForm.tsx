@@ -8,7 +8,7 @@ import { Form  } from "@/components/ui/form"
 import GlobalForm from "../GlobalForm"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { AppointmentFormValidation, CreateAppointmentSchema } from "@/lib/FormValidation"
+import { AppointmentFormValidation } from "@/lib/FormValidation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
@@ -70,12 +70,16 @@ async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
         }
 
         // const appointment = await CreateAppointment(appointmentData)
+
+
     } catch (error) {
         console.error('Error on form submit:', error);
     } finally {
         setIsLoading(false); // Ensure loading state is reset
     }
 }
+
+
 
     let buttonLabel;
 
