@@ -15,7 +15,7 @@ import { FormFieldType } from "./PatientForm"
 
 
 
-const AppointmentForm = () => {
+const AppointmentForm = ({userId, patientId, type}: {userId: string; patientId: string; type: "create" | "cancel";}) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -63,6 +63,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                 <h1 className="text-5xl">New Appointment</h1>
                 <p>Request a new appointment</p>
             </section>
+
+            
 
             <GlobalForm control={form.control} 
             fieldType={FormFieldType.INPUT}

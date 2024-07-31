@@ -23,7 +23,7 @@ import { getPatient } from "@/lib/actions/patient.actions"
                 <span className="text-white">-Sched</span>
             </div>
 
-            <AppointmentForm type="create" userId={userId}/>
+            <AppointmentForm type="create" userId={userId} patientId={patient.$id}/>
 
                 <div className="flex items-center text-14-regular mt-10 justify-between">
                     <p className="justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
