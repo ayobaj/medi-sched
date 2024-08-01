@@ -5,7 +5,11 @@ import Link from "next/link"
 
 
 
-const Home = () => {
+const Home = ({searchParams}: SearchParamProps) => {
+
+  const isAdmin = searchParams.admin === 'true';
+
+
   return (
     <div className="flex h-screen max-h-screen">
 
