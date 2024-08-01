@@ -70,6 +70,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
 
         // @ts-ignore
         const patient = await registerPatient(patientData);
+        
 
         if(patient) router.push(`/patients/${user.$id}/new-appointment`)
 
