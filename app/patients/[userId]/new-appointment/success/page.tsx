@@ -1,7 +1,9 @@
+import { Button } from "@/components/ui/button";
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
 import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 
 const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
@@ -18,7 +20,7 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
             <p >Medi-<span className="text-indigo-600">Shed</span></p>
         </div>
 
-            <section className="flex flex-col items-center py-8 gap-12">
+            <section className="flex flex-col items-center gap-8">
                 <Image 
                     src="/assets/gifs/suc.gif"
                     height={300} 
@@ -35,7 +37,7 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
             </section>
 
 
-            <section className="flex gap-3 flex-col justify-center items-center">
+            <section className="flex gap-3 flex-col justify-center items-center py-9">
                 <div>Requested Appointment details below</div>
 
                 <div className="flex flex-row items-center mx-auto gap-3">
@@ -53,12 +55,21 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
                         />
                     </div>
 
-                    <div>
+                    <div className="flex gap-">
+                        <Image src="/assets/icons/calendar.svg" height={24} width={24} alt="calendar"/>
                         {formatDateTime(appointment.schedule).dateTime}
                     </div>
 
                 </div>
             </section>
+
+            <Button variant="outline" className="bg-indigo-600 mt-5" asChild>
+                <Link href={`/patients/${userId}/new-appointment`}>
+                    New Appointment
+                </Link>
+            </Button>
+
+            <p className="mt-8 justify-items-end text-dark-600 lg:text-left">© {new Date().getFullYear()} Medi-Sched</p>
 
 
         </div>
