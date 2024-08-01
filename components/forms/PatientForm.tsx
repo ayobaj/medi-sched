@@ -74,7 +74,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
             <section className="mb-12 space-y-4 mt-3">
                 <h1 className="text-5xl">Welcome <span className="text-indigo-600">!</span></h1>
-                <p>Schedule your appointment with a specialist</p>
+                <p>Schedule your appointment with a Dcotor</p>
             </section>
 
             <GlobalForm control={form.control} 
@@ -103,7 +103,6 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
         <SubmitButton isLoading={isLoading}>Start</SubmitButton>
 
-        
 
         </form>
 

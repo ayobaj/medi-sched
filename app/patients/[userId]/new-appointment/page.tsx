@@ -1,8 +1,6 @@
-    import AppointmentForm from "@/components/forms/AppointmentForm"
-import PatientForm from "@/components/forms/PatientForm"
+import AppointmentForm from "@/components/forms/AppointmentForm"
 import { getPatient } from "@/lib/actions/patient.actions"
-    import Image from "next/image"
-    import Link from "next/link"
+import Image from "next/image"
 
 
 

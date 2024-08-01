@@ -123,8 +123,8 @@ async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
                     <GlobalForm control={form.control} 
                     fieldType={FormFieldType.SELECT}
                     name="primaryPhysician"
-                    label="Doctor or Physician"
-                    placeholder="Select a doctor or Physician"
+                    label="Doctor"
+                    placeholder="Select a doctor"
                     >
                     {Doctors.map((doctor) => (
                         <SelectItem key = {doctor.name} value={doctor.name}>
