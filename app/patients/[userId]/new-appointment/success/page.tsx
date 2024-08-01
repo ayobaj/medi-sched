@@ -1,9 +1,15 @@
-import { Section } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Doctors } from "@/constants";
+import { getAppointment } from "@/lib/actions/appointment.actions";
+import Image from "next/image";
 
 
-const page = () => {
+const Success = async ({params: {userId}, searchParams}: SearchParamProps) => {
+
+const appointmentId = (searchParams?.appointmentId as string) || " ";
+const appointment = await getAppointment(appointmentId);
+const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
+
+
     return (
         <div className="flex h-screen max-h-screen px-[5%] justify-center items-center flex-col">
 
@@ -28,11 +34,17 @@ const page = () => {
             </section>
 
 
-            <section>
+            <section className="flex items-center gap-3">
                 <p>Requested Appointment details</p>
 
-                <div className="flex items-center gap-3">
-
+                <div className="">
+                    <Image 
+                        src={doctor?.image!}
+                        alt="doctor"
+                        width={100}
+                        height={100}
+                        className="size-6"
+                    />
                 </div>
             </section>
 
@@ -41,4 +53,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Success
