@@ -34,17 +34,24 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
             </section>
 
 
-            <section className="flex items-center gap-3">
+            <section className="flex gap-3 flex-col">
                 <p>Requested Appointment details</p>
 
-                <div className="">
+                <div className="flex flex-row items-center mx-auto mt-5 gap-3">
+                    <div>
+                        {doctor?.name!}
+                    </div>
+
+                    <div className="">
                     <Image 
                         src={doctor?.image!}
                         alt="doctor"
                         width={100}
                         height={100}
-                        className="size-6"
+                        className="size-6 rounded-full"
                     />
+                </div>
+
                 </div>
             </section>
 

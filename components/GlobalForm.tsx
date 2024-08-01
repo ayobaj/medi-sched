@@ -108,7 +108,7 @@ const {iconSrc, iconAlt, fieldType, placeholder, showTimeSelect, dateFormat, ren
         case FormFieldType.SELECT: 
         return(
             <FormControl>
-                <Select onValueChange={field.OnChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                         <SelectTrigger className="shad-select-trigger">
                             <SelectValue placeholder={placeholder}/>
