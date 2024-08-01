@@ -42,7 +42,7 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
 
                 <div className="flex flex-row items-center mx-auto gap-3">
                     <div className="whitespace-nowrap bg-slate-600 rounded-md p-2">
-                        {doctor?.name!}
+                        {`Dr `}{doctor?.name!}
                     </div>
 
                     <div className="">
@@ -63,7 +63,7 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
                 </div>
             </section>
 
-            <Button variant="outline" className="bg-indigo-600 mt-5" asChild>
+            <Button className="bg-indigo-600 mt-5" asChild>
                 <Link href={`/patients/${userId}/new-appointment`}>
                     New Appointment
                 </Link>
