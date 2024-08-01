@@ -11,9 +11,9 @@ const Home = () => {
 
       {/* otp verification*/}
 
-      <section className="remove-scrollbar container my-auto">
+      <section className="remove-scrollbar container">
         
-        <div className="sub-container max-w-[496px]">
+        <div className="sub-container max-w-[496px] flex-1 flex-col">
 
           <div className="flex text-xl">
             <span className="text-indigo-600">Medi</span>
@@ -35,7 +35,7 @@ const Home = () => {
 
       <Image src='/assets/images/frm.jpeg'
         alt='patient'
-        className="side-img max-w-[50%]"
+        className="side-img max-w-[50%] object-cover"
         height={1000}
         width={1000}/>
 
