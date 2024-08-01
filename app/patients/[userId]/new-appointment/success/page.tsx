@@ -1,5 +1,6 @@
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
+import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 
 
@@ -34,23 +35,27 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
             </section>
 
 
-            <section className="flex gap-3 flex-col">
-                <p>Requested Appointment details</p>
+            <section className="flex gap-3 flex-col justify-center items-center">
+                <div>Requested Appointment details below</div>
 
-                <div className="flex flex-row items-center mx-auto mt-5 gap-3">
-                    <div>
+                <div className="flex flex-row items-center mx-auto gap-3">
+                    <div className="whitespace-nowrap bg-slate-600 rounded-md p-2">
                         {doctor?.name!}
                     </div>
 
                     <div className="">
-                    <Image 
-                        src={doctor?.image!}
-                        alt="doctor"
-                        width={100}
-                        height={100}
-                        className="size-6 rounded-full"
-                    />
-                </div>
+                        <Image
+                            src={doctor?.image!}
+                            alt="doctor"
+                            width={100}
+                            height={100}
+                            className="size-8 rounded-full"
+                        />
+                    </div>
+
+                    <div>
+                        {formatDateTime(appointment.schedule).dateTime}
+                    </div>
 
                 </div>
             </section>
