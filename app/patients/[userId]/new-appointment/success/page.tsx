@@ -41,9 +41,6 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
                 <div>Requested Appointment details below</div>
 
                 <div className="flex flex-row items-center mx-auto gap-3">
-                    <div className="whitespace-nowrap bg-slate-600 rounded-md p-2">
-                        {`Dr `}{doctor?.name!}
-                    </div>
 
                     <div className="">
                         <Image
@@ -53,6 +50,10 @@ const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
                             height={100}
                             className="size-8 rounded-full"
                         />
+                    </div>
+
+                    <div className="whitespace-nowrap bg-slate-600 rounded-md p-2">
+                        {`Dr `}{doctor?.name!}
                     </div>
 
                     <div className="flex gap-">
