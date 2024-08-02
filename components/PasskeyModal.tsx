@@ -28,10 +28,12 @@ import { encryptKey } from "@/lib/utils";
 const PasskeyModal = () => {
     const router = useRouter();
     const [open, setOpen] = useState(true);
+
     const closeModal = () => {
         setOpen(false);
         router.push('/');
     }
+
     const [passkey, setPasskey] = useState('');
     const notValid = "Invalid Passkey. Try again"
     const [error, setError] = useState('');
@@ -58,6 +60,7 @@ const PasskeyModal = () => {
             localStorage.setItem('accesskey', encryptedKey);
 
             setOpen(false);
+            router.push('/admin');
         }else{
             setError(notValid);
         }
