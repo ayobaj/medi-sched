@@ -45,7 +45,7 @@ const PasskeyModal = () => {
                 setOpen(false);
                 router.push('/admin');
             }else{
-                setError(notValid);
+                setOpen(true);
             }
         }
     },[encryptedKey])
