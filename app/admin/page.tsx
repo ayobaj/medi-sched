@@ -1,11 +1,24 @@
-import DataTable from "@/components/table/DataTable";
+import {DataTable} from "@/components/table/DataTable";
 import StatCard from "@/components/StatCard";
-import columns from "@/components/table/columns";
+import {columns, Payment} from "@/components/table/columns";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 
 
 const Admin = async () => {
+
+    async function getData(): Promise<Payment[]> {
+        // Fetch data from your API here.
+        return [
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+          // ...
+        ]
+    }
 
     const getTimeOfDayMessage = () => {
         const now = new Date();
