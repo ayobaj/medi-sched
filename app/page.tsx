@@ -1,4 +1,5 @@
 import PatientForm from "@/components/forms/PatientForm"
+import PasskeyModal from "@/components/PasskeyModal";
 import Image from "next/image"
 import Link from "next/link"
 
@@ -13,7 +14,7 @@ const Home = ({searchParams}: SearchParamProps) => {
   return (
     <div className="flex h-screen max-h-screen">
 
-      {/* otp verification*/}
+      {isAdmin && <PasskeyModal/>}
 
       <section className="remove-scrollbar container">
         
