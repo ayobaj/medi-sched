@@ -1,4 +1,6 @@
+import DataTable from "@/components/table/DataTable";
 import StatCard from "@/components/StatCard";
+import columns from "@/components/table/columns";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 
@@ -65,6 +67,8 @@ const Admin = async () => {
                         icon="/assets/icons/cancelled.svg"
                     />
                 </section>
+
+                <DataTable data={appointments.documents} columns={columns}/>
             </main>
         </div>
     )
