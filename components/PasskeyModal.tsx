@@ -21,6 +21,7 @@ import {
     InputOTPGroup,
     InputOTPSlot,
 } from "@/components/ui/input-otp"
+import { encryptKey } from "@/lib/utils";
 
 
 
@@ -32,9 +33,20 @@ const PasskeyModal = () => {
         router.push('/');
     }
     const [passkey, setPasskey] = useState('');
-    const [error, setError] = useState();
-    const validatePasskey = (e) => {
+    const notValid = "Invalid Passkey. Try again"
+    const [error, setError] = useState('');
 
+    const validatePasskey = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        if(passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY){
+            const encryptedKey = encryptKey(passkey);
+
+            localStorage.setItem('accesskey', encryptedKey);
+
+            setOpen(false);
+        }else{
+            setError(notValid);
+        }
     }
 
     return (
