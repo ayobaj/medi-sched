@@ -1,8 +1,9 @@
 import StatCard from "@/components/StatCard";
+import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 
 
-const Admin = () => {
+const Admin = async () => {
 
     const getTimeOfDayMessage = () => {
         const now = new Date();
@@ -16,6 +17,8 @@ const Admin = () => {
             return "Good Evening!";
         }
     };
+
+    const appointments = await getRecentAppointmentList();
 
 
 
@@ -43,21 +46,21 @@ const Admin = () => {
                 <section className="admin-start flex w-full gap-6">
                     <StatCard
                         type="appointments"
-                        count={5}
+                        count={appointments.scheduledCount}
                         label="Scheduled appointments"
                         icon="/assets/icons/appointments.svg"
                     />
 
                     <StatCard
                         type="pending"
-                        count={10}
+                        count={appointments.pendingCount}
                         label="Pending appointments"
                         icon="/assets/icons/pending.svg"
                     />
 
                     <StatCard
                         type="cancelled"
-                        count={2}
+                        count={appointments.cancelledCount}
                         label="Cancelled appointments"
                         icon="/assets/icons/cancelled.svg"
                     />
