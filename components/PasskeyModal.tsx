@@ -13,8 +13,8 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react"
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react"
 
 import {
     InputOTP,
@@ -35,6 +35,20 @@ const PasskeyModal = () => {
     const [passkey, setPasskey] = useState('');
     const notValid = "Invalid Passkey. Try again"
     const [error, setError] = useState('');
+    const pathname = usePathname();
+
+    const encryptedKey = typeof window !== 'undefined' ? window.localStorage.getItem('accessKey') : null;
+
+    useEffect(()=> {
+        if(pathname){
+            if(passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY){
+                setOpen(false);
+                router.push('/admin');
+            }else{
+                setError(notValid);
+            }
+        }
+    },[encryptedKey])
 
     const validatePasskey = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
