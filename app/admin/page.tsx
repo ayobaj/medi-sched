@@ -20,7 +20,7 @@ const Admin = () => {
 
 
     return (
-        <div className="mx-auto flex max-w-7xl flex-col space-y-14">
+        <div className="mx-auto flex max-w-6xl flex-col space-y-14">
             <header className="admin-header">
                 <div className="flex text-xl">
                     <span className="text-indigo-600">Medi</span>
@@ -40,7 +40,7 @@ const Admin = () => {
                     <p className="text-dark-700">Manage your appointments</p>
                 </section>
 
-                <section className="admin-start">
+                <section className="admin-start flex w-full gap-6">
                     <StatCard
                         type="appointments"
                         count={5}
