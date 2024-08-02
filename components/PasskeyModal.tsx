@@ -66,7 +66,7 @@ const PasskeyModal = () => {
 
                 <AlertDialogFooter>
                 <div className="flex flex-col w-full gap-3">
-                <AlertDialogCancel onClick={()=> closeModal()}>Cancel</AlertDialogCancel>
+                <AlertDialogCancel onClick={()=> closeModal()} className="bg-red-700">Cancel</AlertDialogCancel>
                 <AlertDialogAction onClick={(e) => validatePasskey(e)} className="bg-indigo-600 w-full">Enter Admin Passkey</AlertDialogAction>
                 </div>
                 </AlertDialogFooter>
