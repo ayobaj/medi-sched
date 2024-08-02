@@ -21,7 +21,7 @@ import {
     InputOTPGroup,
     InputOTPSlot,
 } from "@/components/ui/input-otp"
-import { encryptKey } from "@/lib/utils";
+import { decryptKey, encryptKey } from "@/lib/utils";
 
 
 
@@ -42,8 +42,11 @@ const PasskeyModal = () => {
     const encryptedKey = typeof window !== 'undefined' ? window.localStorage.getItem('accessKey') : null;
 
     useEffect(()=> {
+
+        const accessKey = encryptedKey && decryptKey(encryptedKey);
+
         if(pathname){
-            if(passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY){
+            if(accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY){
                 setOpen(false);
                 router.push('/admin');
             }else{
