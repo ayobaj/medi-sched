@@ -14,10 +14,11 @@ import { Doctors } from "@/constants"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
 import { createAppointment } from "@/lib/actions/appointment.actions"
+import { Appointment } from "@/types/appwrite.types"
 
 
 
-const AppointmentForm = ({userId, patientId, type}: {userId: string; patientId: string; type: "create" | "cancel" | "schedule"}) => {
+const AppointmentForm = ({userId, patientId, type, appointment, setOpen}: {userId: string; patientId: string; type: "create" | "cancel" | "schedule", appointment?: Appointment, setOpen: (open: boolean) => void;}) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -73,6 +74,20 @@ async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
                 form.reset();
                 router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
             }
+        }else{
+            const appointmentToUpdate = {
+                userId,
+                appoinmentId: appointment?.$id,
+                appointment: {
+                    primaryPhysicain: values?.primaryPhysician,
+                    schedule: new Date(values?.schedule),
+                    status: status as Status,
+                    cancellationReason: values?.cancellationReason,
+                },
+                type
+            }
+
+            const updatedAppointment = await updateAppointment(appointmentToUpdate);
         }
 
         
@@ -108,9 +123,9 @@ async function onSubmit(values : z.infer<typeof AppointmentFormValidation>) {
     return (
         <Form {...form}>
 
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 flex-1">
 
-            <section className="mb-12 space-y-4 mt-3">
+            <section className="mb-3 space-y-2">
                 <h1 className="text-5xl">New Appointment</h1>
                 <p>Request a new appointment</p>
             </section>
