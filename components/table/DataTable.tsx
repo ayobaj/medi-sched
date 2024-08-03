@@ -35,11 +35,11 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHeader>
+    <div className="rounded-md border data-table">
+      <Table className="shad-table">
+        <TableHeader className="bg-dark-200">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className="shad-table-row-header">
               {headerGroup.headers.map((header) => {
                 return (
                   <TableHead key={header.id}>
@@ -61,6 +61,7 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="shad-table-row"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -79,7 +80,7 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
 
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="table-actions">
         <Button
           variant="outline"
           size="sm"

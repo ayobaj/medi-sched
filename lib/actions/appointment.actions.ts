@@ -93,7 +93,7 @@ export const updateAppointment = async ({appointmentId, userId, appointment, typ
         //sms notification
 
         revalidatePath('/admin');
-        return parseStringify(updateAppointment);
+        return parseStringify(updatedAppointment);
 
     }catch(error){
         console.log(error)

@@ -1,7 +1,8 @@
 import {DataTable} from "@/components/table/DataTable";
 import StatCard from "@/components/StatCard";
-import {columns, Payment} from "@/components/table/columns";
+import {columns} from "@/components/table/columns";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
+import Link from "next/link";
 
 
 
@@ -31,8 +32,10 @@ const Admin = async () => {
         <div className="mx-auto flex max-w-6xl flex-col space-y-14">
             <header className="admin-header">
                 <div className="flex text-xl">
-                    <span className="text-indigo-600">Medi</span>
-                    <span className="text-white">-Sched</span>
+                    <Link href='/'>
+                        <span className="text-indigo-600">Medi</span>
+                        <span className="text-white">-Sched</span>
+                    </Link>
                 </div>
 
                 <p className="text-16-semibold">Admin Dashboard</p>
