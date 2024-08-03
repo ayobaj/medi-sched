@@ -18,6 +18,7 @@ import { Appointment } from "@/types/appwrite.types"
 
 
 
+
 const AppointmentForm = ({userId, patientId, type, appointment, setOpen}: {userId: string; patientId: string; type: "create" | "cancel" | "schedule", appointment?: Appointment, setOpen: (open: boolean) => void}) => {
 
     const [isLoading, setIsLoading] = useState(false);
@@ -29,11 +30,11 @@ const AppointmentForm = ({userId, patientId, type, appointment, setOpen}: {userI
 const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-        primaryPhysician: appointment && appointment.primaryPhysician,
-        schedule: appointment ? new Date(appointment.schedule): new Date(),
+        primaryPhysician: appointment ? appointment.primaryPhysician : '',
+        schedule: appointment ? new Date(appointment?.schedule): new Date(Date.now()),
         reason: appointment ? appointment.reason : '',
-        note: appointment ? appointment.note : '',
-        cancellationReason: appointment ? appointment.cancellationReason : '',
+        note: appointment?.note ||  '',
+        cancellationReason: appointment?.cancellationReason || '',
     },
 })
 
