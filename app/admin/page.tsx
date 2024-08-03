@@ -7,84 +7,6 @@ import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 const Admin = async () => {
 
-    async function getData(): Promise<Payment[]> {
-        // Fetch data from your API here.
-        return [
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-            {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-          // ...
-        ]
-    }
 
     const getTimeOfDayMessage = () => {
         const now = new Date();
@@ -101,7 +23,7 @@ const Admin = async () => {
 
     const appointments = await getRecentAppointmentList();
 
-    
+
 
 
 
@@ -149,8 +71,7 @@ const Admin = async () => {
                     />
                 </section>
 
-                <DataTable data={data} columns={columns}/>
-                {/* <DataTable data={appointments.documents} columns={columns}/> */}
+                <DataTable data={appointments.documents} columns={columns}/>
             </main>
         </div>
     )
