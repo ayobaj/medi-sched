@@ -32,6 +32,19 @@ const PatientForm = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const getTimeOfDayMessage = () => {
+        const now = new Date();
+        const hours = now.getHours();
+    
+        if (hours < 12) {
+            return "Good Morning!";
+        } else if (hours < 18) {
+            return "Good Afternoon!";
+        } else {
+            return "Good Evening!";
+        }
+    };
+
 
 
 // 1. Define your form.
@@ -73,7 +86,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
 
             <section className="mb-12 space-y-4 mt-3">
-                <h1 className="text-5xl">Welcome <span className="text-indigo-600">!</span></h1>
+                <h1 className="text-5xl">{getTimeOfDayMessage()} <span className="text-indigo-600">!</span></h1>
                 <p>Schedule your appointment with a Dcotor</p>
             </section>
 

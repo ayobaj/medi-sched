@@ -18,31 +18,34 @@ import {
 import { parseStringify } from "../utils";
 
 // CREATIING A USER
+
+
+//GETTING A USER 
 export const createUser = async (user: CreateUserParams) => {
     try {
-        const newuser = await users.create(
+      // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
+      const newuser = await users.create(
         ID.unique(),
         user.email,
         user.phone,
         undefined,
         user.name
-        );
-
-        return parseStringify(newuser);
+      );
+  
+      return parseStringify(newuser);
     } catch (error: any) {
-        // Check existing user
-        if (error && error?.code === 409) {
+      // Check existing user
+      if (error && error?.code === 409) {
         const existingUser = await users.list([
-            Query.equal("email", [user.email]),
+          Query.equal("email", [user.email]),
         ]);
-
+  
         return existingUser.users[0];
-        }
-        console.error("An error occurred while creating a new user:", error);
+      }
+      console.error("An error occurred while creating a new user:", error);
     }
 };
 
-//GETTING A USER ID
 export const getUser = async (userId: string) => {
 
     try{
@@ -102,4 +105,6 @@ export const getPatient = async (userId: string) => {
         console.log(error)
     }
 };
+
+
 

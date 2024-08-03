@@ -10,6 +10,20 @@ const Home = ({searchParams}: SearchParamProps) => {
 
   const isAdmin = searchParams.admin === 'true';
 
+  const getTimeOfDayMessage = () => {
+    const now = new Date();
+    const hours = now.getHours();
+
+    if (hours < 12) {
+        return "Good Morning!";
+    } else if (hours < 18) {
+        return "Good Afternoon!";
+    } else {
+        return "Good Evening!";
+    }
+};
+
+
 
   return (
     <div className="flex h-screen max-h-screen">
