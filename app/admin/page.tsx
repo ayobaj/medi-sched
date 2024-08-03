@@ -16,6 +16,72 @@ const Admin = async () => {
             status: "pending",
             email: "m@example.com",
         },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
+            {
+            id: "728ed52f",
+            amount: 100,
+            status: "pending",
+            email: "m@example.com",
+        },
           // ...
         ]
     }
@@ -34,6 +100,8 @@ const Admin = async () => {
     };
 
     const appointments = await getRecentAppointmentList();
+
+    
 
 
 
@@ -81,7 +149,8 @@ const Admin = async () => {
                     />
                 </section>
 
-                <DataTable data={appointments.documents} columns={columns}/>
+                <DataTable data={data} columns={columns}/>
+                {/* <DataTable data={appointments.documents} columns={columns}/> */}
             </main>
         </div>
     )
