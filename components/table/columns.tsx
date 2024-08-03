@@ -5,12 +5,12 @@ import { MoreHorizontal } from "lucide-react"
  
 import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
 // This type is used to define the shape of our data.
@@ -24,7 +24,18 @@ export type Payment = {
 
 export const columns: ColumnDef<Payment>[] = [
 
-
+    {
+        header: 'ID',
+        cell: ({row}) => <p className="text-14-medium">{row.index + 1}</p>
+    },
+    {
+        accessorKey: 'patient',
+        header: 'Patient',
+        cell: ({row}) => {
+            const appointment = row.original;
+            return <p className="text-14-medium">{appointment.patient.name}</p>
+        }
+    },
     {
         accessorKey: "status",
         header: "Status",
