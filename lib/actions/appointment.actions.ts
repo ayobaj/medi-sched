@@ -5,6 +5,8 @@ import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging } from "..
 import { parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
+import { formatDateTime } from "../utils";
+
 
 
 export const createAppointment = async (appointment: CreateAppointmentParams) => {
@@ -90,7 +92,11 @@ export const updateAppointment = async ({appointmentId, userId, appointment, typ
             throw new Error('Appointment not found');
         }
 
-        //sms notification
+        const smsMessage = `Medi-Sched. 
+        ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!).dateTime} with Dr. ${appointment.primaryPhysician}` 
+            : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+        await smsNotification(userId, smsMessage);
+
 
         revalidatePath('/admin');
         return parseStringify(updatedAppointment);
