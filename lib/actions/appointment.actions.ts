@@ -1,7 +1,7 @@
 "use server"
 
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging, messaging } from "../appwrite.config";
 import { parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
@@ -100,7 +100,22 @@ export const updateAppointment = async ({appointmentId, userId, appointment, typ
     }
 }
 
+export const smsNotification = async (userId:string, content:string) => {
+    try{
 
+        const message = await messaging.createSms(
+            ID.unique(),
+            content,
+            [],
+            [userId]
+        )
+
+        return parseStringify(message);
+
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 
