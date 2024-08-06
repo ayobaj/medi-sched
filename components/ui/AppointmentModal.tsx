@@ -26,7 +26,7 @@ const AppointmentModal = ({type, patientId, userId, appointment} : { type: 'sche
                 </Button>
             </DialogTrigger>
 
-            <DialogContent className="shad-dialog sm:max-w-lg">
+            <DialogContent className="shad-dialog justify-center items-center mx-auto max-w-[400px] md:max-w-lg">
             <DialogHeader className=" space-y-3">
                 <DialogTitle className="capitalize">{type} Appointment</DialogTitle>
                 <DialogDescription>
