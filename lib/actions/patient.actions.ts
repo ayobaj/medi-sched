@@ -17,10 +17,10 @@ import {
 
 import { parseStringify } from "../utils";
 
-// CREATIING A USER
 
 
-//GETTING A USER 
+
+// CREATING A USER
 export const createUser = async (user: CreateUserParams) => {
     try {
       // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
