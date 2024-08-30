@@ -87,7 +87,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
             <section className="mb-12 space-y-4 mt-3">
                 <h1 className="text-5xl">{getTimeOfDayMessage()} <span className="text-indigo-600">!</span></h1>
-                <p>Schedule your appointment with a Dcotor</p>
+                <p>Schedule your appointment with a Doctor</p>
             </section>
 
             <GlobalForm control={form.control} 
